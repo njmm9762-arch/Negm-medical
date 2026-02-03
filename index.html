@@ -15,14 +15,15 @@ nav { margin-top:15px; }
 nav a { color:white; text-decoration:none; margin:0 12px; font-weight:bold; font-size:15px; }
 .container { max-width:1200px; margin:20px auto; padding:0 15px; }
 .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:20px; }
-.card { background:white; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.15); padding:15px; transition:0.2s; }
+.card { background:white; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.15); padding:15px; transition:0.2s; position:relative; }
 .card:hover { transform:translateY(-5px); box-shadow:0 8px 20px rgba(0,0,0,0.25); }
 .card img, .card video { width:100%; border-radius:10px; margin-top:10px; }
 .card h3 { margin-top:0; font-size:20px; color:#111; }
-.card p { margin:8px 0 12px; font-size:14px; color:#555; }
+.card p { margin:8px 0 12px 0; font-size:14px; color:#555; }
 .card button { background:#1877f2; color:white; border:none; padding:10px 18px; border-radius:5px; cursor:pointer; font-size:14px; }
 .card button:hover { background:#145dbf; }
-#modal { display:none; position:fixed; z-index:999; left:0; top:0; width:100%; height:100%; overflow:auto; background:rgba(0,0,0,0.7); }
+.stats { font-size:13px; color:#777; margin-top:5px; }
+#modal { display:none; position:fixed; z-index:999; left:0; top:0; width:100%; height:100%; overflow:auto; background:rgba(0,0,0,0.8); }
 #modal-content { background:white; margin:50px auto; padding:25px; border-radius:12px; max-width:750px; max-height:80%; overflow-y:auto; font-size:15px; line-height:1.6; }
 #modal-content h3 { margin-top:0; font-size:22px; }
 #modal-content button { background:#ef4444; color:white; padding:10px 18px; border:none; border-radius:5px; cursor:pointer; margin-top:15px; }
@@ -52,16 +53,37 @@ nav a { color:white; text-decoration:none; margin:0 12px; font-weight:bold; font
     <div id="modal-content">
         <h3 id="modal-title"></h3>
         <p id="modal-full-description"></p>
+        <p id="modal-stats"></p>
         <button onclick="closeModal()">إغلاق</button>
     </div>
 </div>
 
 <script>
-async function loadData() {
-    const response = await fetch('data.json');
-    const data = await response.json();
-    renderItems(data.images,'images-container');
-    renderItems(data.videos,'videos-container',true);
+const data = {
+images: [
+{"src":"0b1a7e5fb0518f1db20c9f05b0e5a9cd.png","title":"القلب البشري","shortDesc":"صورة توضح شكل القلب ووظائفه الأساسية.","fullDesc":"الوصف الكامل للقلب البشري مع معلومات طبية مفصلة، 13–14 سطر تقريبًا..."},
+{"src":"1e027fc2e8e2a76f2de7e08a37737084.png","title":"الشريان التاجي","shortDesc":"الشرايين التاجية التي تغذي القلب.","fullDesc":"الوصف الكامل للشريان التاجي مع التفاصيل الطبية..."},
+{"src":"382416e43f47ca7cf6e7351095b99f1f.png","title":"الصمامات القلبية","shortDesc":"الصمامات تنظم تدفق الدم بين غرف القلب.","fullDesc":"الوصف الكامل للصمامات القلبية..."},
+{"src":"54126cb6fd32febd156103a1a763b3be.png","title":"تخطيط القلب","shortDesc":"صورة توضح قراءة ECG.","fullDesc":"الوصف الكامل لتخطيط القلب الكهربائي..."},
+{"src":"6a2f8e607403f4663e6ad659c04da669.png","title":"جراحة القلب المفتوح","shortDesc":"خطوات العملية الجراحية.","fullDesc":"الوصف الكامل لجراحة القلب المفتوح..."},
+{"src":"7b15cef01b46dd62e049b5588863feba.png","title":"تصوير الصدر للقلب","shortDesc":"صورة بالأشعة السينية للقلب.","fullDesc":"الوصف الكامل لتصوير الصدر..."},
+{"src":"9f2ccaca4cc186fb4fbfb59e1541fb72.png","title":"القسطرة القلبية","shortDesc":"إدخال القسطرة لتشخيص وعلاج أمراض القلب.","fullDesc":"الوصف الكامل للقسطرة القلبية..."},
+{"src":"b705c91a00b263504a72a9ada8b8746e.png","title":"الصورة ثلاثية الأبعاد للقلب","shortDesc":"تصميم ثلاثي الأبعاد للقلب.","fullDesc":"الوصف الكامل للتصميم ثلاثي الأبعاد..."},
+{"src":"f71add5479bfb7dbe92f990985eb6b93.png","title":"القلب والأوعية الدموية","shortDesc":"الصورة توضح العلاقة بين القلب والأوعية الدموية.","fullDesc":"الوصف الكامل للقلب والأوعية الدموية..."}
+],
+videos: [
+{"src":"17a12f9697743b4271a04c6cc3683c20.mp4","title":"جراحة صمام القلب","shortDesc":"فيديو يوضح خطوات إجراء جراحة صمام القلب.","fullDesc":"الوصف الكامل للفيديو الأول..."},
+{"src":"4343d4338acc3dbb46c36473f261c8bc.mp4","title":"عملية القسطرة","shortDesc":"فيديو يوضح كيفية إجراء القسطرة القلبية.","fullDesc":"الوصف الكامل للفيديو الثاني..."},
+{"src":"dc95c4c8d68ebe5f55987d1ab01a3dae.mp4","title":"عملية القلب المفتوح","shortDesc":"فيديو يوضح خطوات عملية القلب المفتوح.","fullDesc":"الوصف الكامل للفيديو الثالث..."},
+{"src":"e9dd9011ecfb469373f3408fc7924f15.mp4","title":"تخطيط القلب أثناء الجراحة","shortDesc":"فيديو يوضح قراءة ECG خلال العملية.","fullDesc":"الوصف الكامل للفيديو الرابع..."},
+{"src":"fbe9ef84ad06f7a4ad8f8b0943217f25.mp4","title":"جراحة الشرايين التاجية","shortDesc":"فيديو يوضح العملية بالتفصيل.","fullDesc":"الوصف الكامل للفيديو الخامس..."}
+]
+};
+
+function getRandomStats(){
+    const likes = (Math.floor(Math.random()*900)+100)+'M';
+    const views = (Math.floor(Math.random()*900)+100)+'B';
+    return {likes,views};
 }
 
 function renderItems(dataArray, containerId, isVideo=false){
@@ -69,6 +91,7 @@ function renderItems(dataArray, containerId, isVideo=false){
     dataArray.forEach((item,index)=>{
         const div = document.createElement('div');
         div.className='card';
+        const stats = getRandomStats();
         if(isVideo){
             div.innerHTML = `<h3>${item.title}</h3>
                 <video controls>
@@ -76,11 +99,13 @@ function renderItems(dataArray, containerId, isVideo=false){
                     المتصفح لا يدعم الفيديو
                 </video>
                 <p>${item.shortDesc}</p>
+                <div class="stats">${stats.views} مشاهدة · ${stats.likes} إعجاب</div>
                 <button onclick="openModal(${index}, true)">عرض المزيد</button>`;
         } else {
             div.innerHTML = `<h3>${item.title}</h3>
                 <img src="${item.src}" alt="${item.title}">
                 <p>${item.shortDesc}</p>
+                <div class="stats">${stats.views} مشاهدة · ${stats.likes} إعجاب</div>
                 <button onclick="openModal(${index}, false)">عرض المزيد</button>`;
         }
         container.appendChild(div);
@@ -88,17 +113,18 @@ function renderItems(dataArray, containerId, isVideo=false){
 }
 
 function openModal(index,isVideo){
-    fetch('data.json').then(r=>r.json()).then(data=>{
-        const item = isVideo ? data.videos[index] : data.images[index];
-        document.getElementById('modal-title').innerText=item.title;
-        document.getElementById('modal-full-description').innerText=item.fullDesc;
-        document.getElementById('modal').style.display='block';
-    });
+    const item = isVideo ? data.videos[index] : data.images[index];
+    const stats = getRandomStats();
+    document.getElementById('modal-title').innerText=item.title;
+    document.getElementById('modal-full-description').innerText=item.fullDesc;
+    document.getElementById('modal-stats').innerText=stats.views+' مشاهدة · '+stats.likes+' إعجاب';
+    document.getElementById('modal').style.display='block';
 }
 
 function closeModal(){ document.getElementById('modal').style.display='none'; }
 
-loadData();
+renderItems(data.images,'images-container');
+renderItems(data.videos,'videos-container',true);
 </script>
 
 </body>
