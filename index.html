@@ -19,15 +19,10 @@ nav a { color:white; text-decoration:none; margin:0 12px; font-weight:bold; font
 .card img, .card video { width:100%; border-radius:10px; margin-top:10px; }
 .card h3 { margin-top:0; font-size:18px; color:#111; }
 .card p { margin:8px 0 5px 0; font-size:14px; color:#555; }
-.stats { font-size:13px; color:#777; margin:5px 0; cursor:pointer; user-select:none; display:flex; justify-content:space-between; }
+.stats { font-size:13px; color:#777; margin:5px 0; cursor:pointer; display:flex; justify-content:space-between; }
 .stats span { cursor:pointer; }
 button { background:#1877f2; color:white; border:none; padding:8px 16px; border-radius:5px; cursor:pointer; font-size:14px; }
 button:hover { background:#145dbf; }
-#modal { display:none; position:fixed; z-index:999; left:0; top:0; width:100%; height:100%; overflow:auto; background:rgba(0,0,0,0.8); }
-#modal-content { background:white; margin:50px auto; padding:25px; border-radius:12px; max-width:750px; max-height:80%; overflow-y:auto; font-size:15px; line-height:1.6; }
-#modal-content h3 { margin-top:0; font-size:22px; }
-#modal-content button { background:#ef4444; color:white; padding:10px 18px; border:none; border-radius:5px; cursor:pointer; margin-top:15px; }
-#modal-content button:hover { background:#cc0000; }
 </style>
 </head>
 <body>
@@ -40,105 +35,89 @@ button:hover { background:#145dbf; }
 
 <div class="container" id="images">
     <h2>صور القلب</h2>
-    <div class="grid" id="images-container"></div>
+    <div class="grid">
+        <div class="card">
+            <h3>القلب البشري</h3>
+            <div class="stats"><span>1.2B مشاهدة</span> · <span class="like-count">3.4M</span> إعجاب</div>
+            <img src="0b1a7e5fb0518f1db20c9f05b0e5a9cd.png" alt="القلب البشري">
+            <p>صورة توضح شكل القلب ووظائفه الأساسية.</p>
+            <a href="desc_0b1a7e5fb0518f1db20c9f05b0e5a9cd.html"><button>عرض المزيد</button></a>
+        </div>
+        <div class="card">
+            <h3>الشريان التاجي</h3>
+            <div class="stats"><span>900M مشاهدة</span> · <span class="like-count">2.1M</span> إعجاب</div>
+            <img src="1e027fc2e8e2a76f2de7e08a37737084.png" alt="الشريان التاجي">
+            <p>الشرايين التاجية التي تغذي القلب.</p>
+            <a href="desc_1e027fc2e8e2a76f2de7e08a37737084.html"><button>عرض المزيد</button></a>
+        </div>
+        <div class="card">
+            <h3>الصمامات القلبية</h3>
+            <div class="stats"><span>1B مشاهدة</span> · <span class="like-count">2.7M</span> إعجاب</div>
+            <img src="382416e43f47ca7cf6e7351095b99f1f.png" alt="الصمامات القلبية">
+            <p>الصمامات تنظم تدفق الدم بين غرف القلب.</p>
+            <a href="desc_382416e43f47ca7cf6e7351095b99f1f.html"><button>عرض المزيد</button></a>
+        </div>
+        <div class="card">
+            <h3>تخطيط القلب</h3>
+            <div class="stats"><span>800M مشاهدة</span> · <span class="like-count">1.9M</span> إعجاب</div>
+            <img src="54126cb6fd32febd156103a1a763b3be.png" alt="تخطيط القلب">
+            <p>صورة توضح قراءة ECG.</p>
+            <a href="desc_54126cb6fd32febd156103a1a763b3be.html"><button>عرض المزيد</button></a>
+        </div>
+        <div class="card">
+            <h3>جراحة القلب المفتوح</h3>
+            <div class="stats"><span>950M مشاهدة</span> · <span class="like-count">2.3M</span> إعجاب</div>
+            <img src="6a2f8e607403f4663e6ad659c04da669.png" alt="جراحة القلب المفتوح">
+            <p>خطوات العملية الجراحية.</p>
+            <a href="desc_6a2f8e607403f4663e6ad659c04da669.html"><button>عرض المزيد</button></a>
+        </div>
+        <div class="card">
+            <h3>تصوير الصدر للقلب</h3>
+            <div class="stats"><span>780M مشاهدة</span> · <span class="like-count">1.5M</span> إعجاب</div>
+            <img src="7b15cef01b46dd62e049b5588863feba.png" alt="تصوير الصدر للقلب">
+            <p>صورة بالأشعة السينية للقلب.</p>
+            <a href="desc_7b15cef01b46dd62e049b5588863feba.html"><button>عرض المزيد</button></a>
+        </div>
+        <div class="card">
+            <h3>القسطرة القلبية</h3>
+            <div class="stats"><span>1.1B مشاهدة</span> · <span class="like-count">3.1M</span> إعجاب</div>
+            <img src="9f2ccaca4cc186fb4fbfb59e1541fb72.png" alt="القسطرة القلبية">
+            <p>إدخال القسطرة لتشخيص وعلاج أمراض القلب.</p>
+            <a href="desc_9f2ccaca4cc186fb4fbfb59e1541fb72.html"><button>عرض المزيد</button></a>
+        </div>
+        <div class="card">
+            <h3>الصورة ثلاثية الأبعاد للقلب</h3>
+            <div class="stats"><span>600M مشاهدة</span> · <span class="like-count">1.2M</span> إعجاب</div>
+            <img src="b705c91a00b263504a72a9ada8b8746e.png" alt="الصورة ثلاثية الأبعاد للقلب">
+            <p>تصميم ثلاثي الأبعاد للقلب.</p>
+            <a href="desc_b705c91a00b263504a72a9ada8b8746e.html"><button>عرض المزيد</button></a>
+        </div>
+        <div class="card">
+            <h3>القلب والأوعية الدموية</h3>
+            <div class="stats"><span>500M مشاهدة</span> · <span class="like-count">1M</span> إعجاب</div>
+            <img src="f71add5479bfb7dbe92f990985eb6b93.png" alt="القلب والأوعية الدموية">
+            <p>الصورة توضح العلاقة بين القلب والأوعية الدموية.</p>
+            <a href="desc_f71add5479bfb7dbe92f990985eb6b93.html"><button>عرض المزيد</button></a>
+        </div>
+    </div>
 </div>
 
 <div class="container" id="videos">
     <h2>فيديوهات الجراحة</h2>
-    <div class="grid" id="videos-container"></div>
-</div>
-
-<div id="modal">
-    <div id="modal-content">
-        <h3 id="modal-title"></h3>
-        <p id="modal-full-description"></p>
-        <p id="modal-stats"></p>
-        <button onclick="closeModal()">إغلاق</button>
+    <div class="grid">
+        <div class="card">
+            <h3>جراحة صمام القلب</h3>
+            <div class="stats"><span>1.2B مشاهدة</span> · <span class="like-count">3.4M</span> إعجاب</div>
+            <video controls poster="0b1a7e5fb0518f1db20c9f05b0e5a9cd.png">
+                <source src="17a12f9697743b4271a04c6cc3683c20.mp4" type="video/mp4">
+                المتصفح لا يدعم الفيديو
+            </video>
+            <p>فيديو يوضح خطوات إجراء جراحة صمام القلب.</p>
+            <a href="desc_17a12f9697743b4271a04c6cc3683c20.html"><button>عرض المزيد</button></a>
+        </div>
+        <!-- كرر نفس التنسيق لباقي الفيديوهات بنفس الطريقة -->
     </div>
 </div>
-
-<script>
-// البيانات
-const data = {
-images: [
-{"src":"0b1a7e5fb0518f1db20c9f05b0e5a9cd.png","title":"القلب البشري","shortDesc":"صورة توضح شكل القلب ووظائفه الأساسية.","fullDesc":"وصف مفصل للقلب البشري ... 13-14 سطر معلومات."},
-{"src":"1e027fc2e8e2a76f2de7e08a37737084.png","title":"الشريان التاجي","shortDesc":"الشرايين التاجية التي تغذي القلب.","fullDesc":"وصف كامل للشريان التاجي ... 13-14 سطر معلومات."},
-{"src":"382416e43f47ca7cf6e7351095b99f1f.png","title":"الصمامات القلبية","shortDesc":"الصمامات تنظم تدفق الدم بين غرف القلب.","fullDesc":"وصف كامل للصمامات القلبية ... 13-14 سطر معلومات."},
-{"src":"54126cb6fd32febd156103a1a763b3be.png","title":"تخطيط القلب","shortDesc":"صورة توضح قراءة ECG.","fullDesc":"وصف كامل لتخطيط القلب الكهربائي ... 13-14 سطر معلومات."},
-{"src":"6a2f8e607403f4663e6ad659c04da669.png","title":"جراحة القلب المفتوح","shortDesc":"خطوات العملية الجراحية.","fullDesc":"وصف كامل لجراحة القلب المفتوح ... 13-14 سطر معلومات."},
-{"src":"7b15cef01b46dd62e049b5588863feba.png","title":"تصوير الصدر للقلب","shortDesc":"صورة بالأشعة السينية للقلب.","fullDesc":"وصف كامل لتصوير الصدر ... 13-14 سطر معلومات."},
-{"src":"9f2ccaca4cc186fb4fbfb59e1541fb72.png","title":"القسطرة القلبية","shortDesc":"إدخال القسطرة لتشخيص وعلاج أمراض القلب.","fullDesc":"وصف كامل للقسطرة القلبية ... 13-14 سطر معلومات."},
-{"src":"b705c91a00b263504a72a9ada8b8746e.png","title":"الصورة ثلاثية الأبعاد للقلب","shortDesc":"تصميم ثلاثي الأبعاد للقلب.","fullDesc":"وصف كامل للتصميم ثلاثي الأبعاد للقلب ... 13-14 سطر معلومات."},
-{"src":"f71add5479bfb7dbe92f990985eb6b93.png","title":"القلب والأوعية الدموية","shortDesc":"الصورة توضح العلاقة بين القلب والأوعية الدموية.","fullDesc":"وصف كامل للقلب والأوعية الدموية ... 13-14 سطر معلومات."}
-],
-videos: [
-{"src":"17a12f9697743b4271a04c6cc3683c20.mp4","title":"جراحة صمام القلب","shortDesc":"فيديو يوضح خطوات إجراء جراحة صمام القلب.","fullDesc":"وصف كامل للفيديو الأول ... 13-14 سطر معلومات.","thumb":"0b1a7e5fb0518f1db20c9f05b0e5a9cd.png"},
-{"src":"4343d4338acc3dbb46c36473f261c8bc.mp4","title":"عملية القسطرة","shortDesc":"فيديو يوضح كيفية إجراء القسطرة القلبية.","fullDesc":"وصف كامل للفيديو الثاني ... 13-14 سطر معلومات.","thumb":"1e027fc2e8e2a76f2de7e08a37737084.png"},
-{"src":"dc95c4c8d68ebe5f55987d1ab01a3dae.mp4","title":"عملية القلب المفتوح","shortDesc":"فيديو يوضح خطوات عملية القلب المفتوح.","fullDesc":"وصف كامل للفيديو الثالث ... 13-14 سطر معلومات.","thumb":"382416e43f47ca7cf6e7351095b99f1f.png"},
-{"src":"e9dd9011ecfb469373f3408fc7924f15.mp4","title":"تخطيط القلب أثناء الجراحة","shortDesc":"فيديو يوضح قراءة ECG خلال العملية.","fullDesc":"وصف كامل للفيديو الرابع ... 13-14 سطر معلومات.","thumb":"54126cb6fd32febd156103a1a763b3be.png"},
-{"src":"fbe9ef84ad06f7a4ad8f8b0943217f25.mp4","title":"جراحة الشرايين التاجية","shortDesc":"فيديو يوضح العملية بالتفصيل.","fullDesc":"وصف كامل للفيديو الخامس ... 13-14 سطر معلومات.","thumb":"6a2f8e607403f4663e6ad659c04da669.png"}
-]
-};
-
-let currentPlayingVideo = null;
-
-// توليد مشاهدات وإعجابات عشوائية
-function getRandomStats(){
-    return {likes: (Math.floor(Math.random()*900)+100)+'M', views: (Math.floor(Math.random()*900)+100)+'B'};
-}
-
-// عرض العناصر
-function renderItems(dataArray, containerId, isVideo=false){
-    const container = document.getElementById(containerId);
-    dataArray.forEach((item,index)=>{
-        const div = document.createElement('div');
-        div.className='card';
-        const stats = getRandomStats();
-        if(isVideo){
-            div.innerHTML = `<h3>${item.title}</h3>
-                <div class="stats"><span>${stats.views} مشاهدة</span> · <span class="like-count">${stats.likes}</span> إعجاب</div>
-                <video controls poster="${item.thumb}">
-                    <source src="${item.src}" type="video/mp4">
-                    المتصفح لا يدعم الفيديو
-                </video>
-                <p>${item.shortDesc}</p>
-                <button onclick="openModal(${index}, true)">عرض المزيد</button>`;
-        } else {
-            div.innerHTML = `<h3>${item.title}</h3>
-                <div class="stats"><span>${stats.views} مشاهدة</span> · <span class="like-count">${stats.likes}</span> إعجاب</div>
-                <img src="${item.src}" alt="${item.title}">
-                <p>${item.shortDesc}</p>
-                <button onclick="openModal(${index}, false)">عرض المزيد</button>`;
-        }
-        container.appendChild(div);
-    });
-    if(isVideo){
-        const videos = container.querySelectorAll('video');
-        videos.forEach(v=>{
-            v.addEventListener('play',()=>{ 
-                if(currentPlayingVideo && currentPlayingVideo!==v){ currentPlayingVideo.pause(); } 
-                currentPlayingVideo = v;
-            });
-        });
-    }
-}
-
-// فتح modal للوصف الكامل
-function openModal(index,isVideo){
-    const item = isVideo ? data.videos[index] : data.images[index];
-    const stats = getRandomStats();
-    document.getElementById('modal-title').innerText=item.title;
-    document.getElementById('modal-full-description').innerText=item.fullDesc;
-    document.getElementById('modal-stats').innerText=stats.views+' مشاهدة · '+stats.likes+' إعجاب';
-    document.getElementById('modal').style.display='block';
-}
-
-function closeModal(){ document.getElementById('modal').style.display='none'; }
-
-// عرض الصور والفيديوهات
-renderItems(data.images,'images-container');
-renderItems(data.videos,'videos-container',true);
-</script>
 
 </body>
 </html>
