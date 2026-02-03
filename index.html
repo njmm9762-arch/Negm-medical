@@ -19,7 +19,8 @@ nav a { color:white; text-decoration:none; margin:0 12px; font-weight:bold; font
 .card img, .card video { width:100%; border-radius:10px; margin-top:10px; }
 .card h3 { margin-top:0; font-size:18px; color:#111; }
 .card p { margin:8px 0 5px 0; font-size:14px; color:#555; }
-.stats { font-size:13px; color:#777; margin:5px 0; cursor:pointer; user-select:none; }
+.stats { font-size:13px; color:#777; margin:5px 0; cursor:pointer; user-select:none; display:flex; justify-content:space-between; }
+.stats span { cursor:pointer; }
 button { background:#1877f2; color:white; border:none; padding:8px 16px; border-radius:5px; cursor:pointer; font-size:14px; }
 button:hover { background:#145dbf; }
 #modal { display:none; position:fixed; z-index:999; left:0; top:0; width:100%; height:100%; overflow:auto; background:rgba(0,0,0,0.8); }
@@ -57,33 +58,36 @@ button:hover { background:#145dbf; }
 </div>
 
 <script>
+// البيانات
 const data = {
 images: [
-{"src":"0b1a7e5fb0518f1db20c9f05b0e5a9cd.png","title":"القلب البشري","shortDesc":"صورة توضح شكل القلب ووظائفه الأساسية.","fullDesc":"الوصف الكامل للقلب البشري مع معلومات طبية مفصلة، 13–14 سطر تقريبًا..."},
-{"src":"1e027fc2e8e2a76f2de7e08a37737084.png","title":"الشريان التاجي","shortDesc":"الشرايين التاجية التي تغذي القلب.","fullDesc":"الوصف الكامل للشريان التاجي مع التفاصيل الطبية..."},
-{"src":"382416e43f47ca7cf6e7351095b99f1f.png","title":"الصمامات القلبية","shortDesc":"الصمامات تنظم تدفق الدم بين غرف القلب.","fullDesc":"الوصف الكامل للصمامات القلبية..."},
-{"src":"54126cb6fd32febd156103a1a763b3be.png","title":"تخطيط القلب","shortDesc":"صورة توضح قراءة ECG.","fullDesc":"الوصف الكامل لتخطيط القلب الكهربائي..."},
-{"src":"6a2f8e607403f4663e6ad659c04da669.png","title":"جراحة القلب المفتوح","shortDesc":"خطوات العملية الجراحية.","fullDesc":"الوصف الكامل لجراحة القلب المفتوح..."},
-{"src":"7b15cef01b46dd62e049b5588863feba.png","title":"تصوير الصدر للقلب","shortDesc":"صورة بالأشعة السينية للقلب.","fullDesc":"الوصف الكامل لتصوير الصدر..."},
-{"src":"9f2ccaca4cc186fb4fbfb59e1541fb72.png","title":"القسطرة القلبية","shortDesc":"إدخال القسطرة لتشخيص وعلاج أمراض القلب.","fullDesc":"الوصف الكامل للقسطرة القلبية..."},
-{"src":"b705c91a00b263504a72a9ada8b8746e.png","title":"الصورة ثلاثية الأبعاد للقلب","shortDesc":"تصميم ثلاثي الأبعاد للقلب.","fullDesc":"الوصف الكامل للتصميم ثلاثي الأبعاد..."},
-{"src":"f71add5479bfb7dbe92f990985eb6b93.png","title":"القلب والأوعية الدموية","shortDesc":"الصورة توضح العلاقة بين القلب والأوعية الدموية.","fullDesc":"الوصف الكامل للقلب والأوعية الدموية..."}
+{"src":"0b1a7e5fb0518f1db20c9f05b0e5a9cd.png","title":"القلب البشري","shortDesc":"صورة توضح شكل القلب ووظائفه الأساسية.","fullDesc":"وصف مفصل للقلب البشري ... 13-14 سطر معلومات."},
+{"src":"1e027fc2e8e2a76f2de7e08a37737084.png","title":"الشريان التاجي","shortDesc":"الشرايين التاجية التي تغذي القلب.","fullDesc":"وصف كامل للشريان التاجي ... 13-14 سطر معلومات."},
+{"src":"382416e43f47ca7cf6e7351095b99f1f.png","title":"الصمامات القلبية","shortDesc":"الصمامات تنظم تدفق الدم بين غرف القلب.","fullDesc":"وصف كامل للصمامات القلبية ... 13-14 سطر معلومات."},
+{"src":"54126cb6fd32febd156103a1a763b3be.png","title":"تخطيط القلب","shortDesc":"صورة توضح قراءة ECG.","fullDesc":"وصف كامل لتخطيط القلب الكهربائي ... 13-14 سطر معلومات."},
+{"src":"6a2f8e607403f4663e6ad659c04da669.png","title":"جراحة القلب المفتوح","shortDesc":"خطوات العملية الجراحية.","fullDesc":"وصف كامل لجراحة القلب المفتوح ... 13-14 سطر معلومات."},
+{"src":"7b15cef01b46dd62e049b5588863feba.png","title":"تصوير الصدر للقلب","shortDesc":"صورة بالأشعة السينية للقلب.","fullDesc":"وصف كامل لتصوير الصدر ... 13-14 سطر معلومات."},
+{"src":"9f2ccaca4cc186fb4fbfb59e1541fb72.png","title":"القسطرة القلبية","shortDesc":"إدخال القسطرة لتشخيص وعلاج أمراض القلب.","fullDesc":"وصف كامل للقسطرة القلبية ... 13-14 سطر معلومات."},
+{"src":"b705c91a00b263504a72a9ada8b8746e.png","title":"الصورة ثلاثية الأبعاد للقلب","shortDesc":"تصميم ثلاثي الأبعاد للقلب.","fullDesc":"وصف كامل للتصميم ثلاثي الأبعاد للقلب ... 13-14 سطر معلومات."},
+{"src":"f71add5479bfb7dbe92f990985eb6b93.png","title":"القلب والأوعية الدموية","shortDesc":"الصورة توضح العلاقة بين القلب والأوعية الدموية.","fullDesc":"وصف كامل للقلب والأوعية الدموية ... 13-14 سطر معلومات."}
 ],
 videos: [
-{"src":"17a12f9697743b4271a04c6cc3683c20.mp4","title":"جراحة صمام القلب","shortDesc":"فيديو يوضح خطوات إجراء جراحة صمام القلب.","fullDesc":"الوصف الكامل للفيديو الأول...","thumb":"0b1a7e5fb0518f1db20c9f05b0e5a9cd.png"},
-{"src":"4343d4338acc3dbb46c36473f261c8bc.mp4","title":"عملية القسطرة","shortDesc":"فيديو يوضح كيفية إجراء القسطرة القلبية.","fullDesc":"الوصف الكامل للفيديو الثاني...","thumb":"1e027fc2e8e2a76f2de7e08a37737084.png"},
-{"src":"dc95c4c8d68ebe5f55987d1ab01a3dae.mp4","title":"عملية القلب المفتوح","shortDesc":"فيديو يوضح خطوات عملية القلب المفتوح.","fullDesc":"الوصف الكامل للفيديو الثالث...","thumb":"382416e43f47ca7cf6e7351095b99f1f.png"},
-{"src":"e9dd9011ecfb469373f3408fc7924f15.mp4","title":"تخطيط القلب أثناء الجراحة","shortDesc":"فيديو يوضح قراءة ECG خلال العملية.","fullDesc":"الوصف الكامل للفيديو الرابع...","thumb":"54126cb6fd32febd156103a1a763b3be.png"},
-{"src":"fbe9ef84ad06f7a4ad8f8b0943217f25.mp4","title":"جراحة الشرايين التاجية","shortDesc":"فيديو يوضح العملية بالتفصيل.","fullDesc":"الوصف الكامل للفيديو الخامس...","thumb":"6a2f8e607403f4663e6ad659c04da669.png"}
+{"src":"17a12f9697743b4271a04c6cc3683c20.mp4","title":"جراحة صمام القلب","shortDesc":"فيديو يوضح خطوات إجراء جراحة صمام القلب.","fullDesc":"وصف كامل للفيديو الأول ... 13-14 سطر معلومات.","thumb":"0b1a7e5fb0518f1db20c9f05b0e5a9cd.png"},
+{"src":"4343d4338acc3dbb46c36473f261c8bc.mp4","title":"عملية القسطرة","shortDesc":"فيديو يوضح كيفية إجراء القسطرة القلبية.","fullDesc":"وصف كامل للفيديو الثاني ... 13-14 سطر معلومات.","thumb":"1e027fc2e8e2a76f2de7e08a37737084.png"},
+{"src":"dc95c4c8d68ebe5f55987d1ab01a3dae.mp4","title":"عملية القلب المفتوح","shortDesc":"فيديو يوضح خطوات عملية القلب المفتوح.","fullDesc":"وصف كامل للفيديو الثالث ... 13-14 سطر معلومات.","thumb":"382416e43f47ca7cf6e7351095b99f1f.png"},
+{"src":"e9dd9011ecfb469373f3408fc7924f15.mp4","title":"تخطيط القلب أثناء الجراحة","shortDesc":"فيديو يوضح قراءة ECG خلال العملية.","fullDesc":"وصف كامل للفيديو الرابع ... 13-14 سطر معلومات.","thumb":"54126cb6fd32febd156103a1a763b3be.png"},
+{"src":"fbe9ef84ad06f7a4ad8f8b0943217f25.mp4","title":"جراحة الشرايين التاجية","shortDesc":"فيديو يوضح العملية بالتفصيل.","fullDesc":"وصف كامل للفيديو الخامس ... 13-14 سطر معلومات.","thumb":"6a2f8e607403f4663e6ad659c04da669.png"}
 ]
 };
 
 let currentPlayingVideo = null;
 
+// توليد مشاهدات وإعجابات عشوائية
 function getRandomStats(){
     return {likes: (Math.floor(Math.random()*900)+100)+'M', views: (Math.floor(Math.random()*900)+100)+'B'};
 }
 
+// عرض العناصر
 function renderItems(dataArray, containerId, isVideo=false){
     const container = document.getElementById(containerId);
     dataArray.forEach((item,index)=>{
@@ -92,7 +96,7 @@ function renderItems(dataArray, containerId, isVideo=false){
         const stats = getRandomStats();
         if(isVideo){
             div.innerHTML = `<h3>${item.title}</h3>
-                <div class="stats">${stats.views} مشاهدة · ${stats.likes} إعجاب</div>
+                <div class="stats"><span>${stats.views} مشاهدة</span> · <span class="like-count">${stats.likes}</span> إعجاب</div>
                 <video controls poster="${item.thumb}">
                     <source src="${item.src}" type="video/mp4">
                     المتصفح لا يدعم الفيديو
@@ -101,7 +105,7 @@ function renderItems(dataArray, containerId, isVideo=false){
                 <button onclick="openModal(${index}, true)">عرض المزيد</button>`;
         } else {
             div.innerHTML = `<h3>${item.title}</h3>
-                <div class="stats">${stats.views} مشاهدة · ${stats.likes} إعجاب</div>
+                <div class="stats"><span>${stats.views} مشاهدة</span> · <span class="like-count">${stats.likes}</span> إعجاب</div>
                 <img src="${item.src}" alt="${item.title}">
                 <p>${item.shortDesc}</p>
                 <button onclick="openModal(${index}, false)">عرض المزيد</button>`;
@@ -119,6 +123,7 @@ function renderItems(dataArray, containerId, isVideo=false){
     }
 }
 
+// فتح modal للوصف الكامل
 function openModal(index,isVideo){
     const item = isVideo ? data.videos[index] : data.images[index];
     const stats = getRandomStats();
@@ -130,6 +135,7 @@ function openModal(index,isVideo){
 
 function closeModal(){ document.getElementById('modal').style.display='none'; }
 
+// عرض الصور والفيديوهات
 renderItems(data.images,'images-container');
 renderItems(data.videos,'videos-container',true);
 </script>
