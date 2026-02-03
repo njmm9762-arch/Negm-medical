@@ -6,9 +6,9 @@
 <title>نجم الطبي</title>
 <link rel="icon" href="file_00000000fb3071f49ad13c71b939f4c6.png" type="image/png">
 <style>
-body { font-family: Arial, sans-serif; margin:0; padding:0; direction: rtl; background:#e9ebee; }
-header { display:flex; align-items:center; padding:15px 20px; background:#1877f2; color:white; }
-header img.logo { width:70px; height:70px; border-radius:50%; border:2px solid white; margin-left:15px; object-fit:cover; }
+body { font-family: Arial, sans-serif; margin:0; padding:0; direction: rtl; background:#f0f2f5; }
+header { display:flex; align-items:center; padding:10px 20px; background:#1877f2; color:white; }
+header img.logo { width:60px; height:60px; border-radius:50%; border:2px solid white; margin-left:15px; object-fit:cover; }
 header h1 { font-size:24px; margin:0; }
 nav { margin-left:auto; }
 nav a { color:white; text-decoration:none; margin:0 12px; font-weight:bold; font-size:15px; }
@@ -19,8 +19,7 @@ nav a { color:white; text-decoration:none; margin:0 12px; font-weight:bold; font
 .card img, .card video { width:100%; border-radius:10px; margin-top:10px; }
 .card h3 { margin-top:0; font-size:18px; color:#111; }
 .card p { margin:8px 0 5px 0; font-size:14px; color:#555; }
-.stats { font-size:13px; color:#777; margin:5px 0; cursor:pointer; display:flex; justify-content:space-between; }
-.stats span { cursor:pointer; }
+.stats { font-size:13px; color:#777; margin:5px 0; display:flex; justify-content:space-between; }
 button { background:#1877f2; color:white; border:none; padding:8px 16px; border-radius:5px; cursor:pointer; font-size:14px; }
 button:hover { background:#145dbf; }
 </style>
@@ -34,90 +33,60 @@ button:hover { background:#145dbf; }
 </header>
 
 <div class="container" id="images">
-    <h2>صور القلب</h2>
-    <div class="grid">
-        <div class="card">
-            <h3>القلب البشري</h3>
-            <div class="stats"><span>1.2B مشاهدة</span> · <span class="like-count">3.4M</span> إعجاب</div>
-            <img src="0b1a7e5fb0518f1db20c9f05b0e5a9cd.png" alt="القلب البشري">
-            <p>صورة توضح شكل القلب ووظائفه الأساسية.</p>
-            <a href="desc_0b1a7e5fb0518f1db20c9f05b0e5a9cd.html"><button>عرض المزيد</button></a>
-        </div>
-        <div class="card">
-            <h3>الشريان التاجي</h3>
-            <div class="stats"><span>900M مشاهدة</span> · <span class="like-count">2.1M</span> إعجاب</div>
-            <img src="1e027fc2e8e2a76f2de7e08a37737084.png" alt="الشريان التاجي">
-            <p>الشرايين التاجية التي تغذي القلب.</p>
-            <a href="desc_1e027fc2e8e2a76f2de7e08a37737084.html"><button>عرض المزيد</button></a>
-        </div>
-        <div class="card">
-            <h3>الصمامات القلبية</h3>
-            <div class="stats"><span>1B مشاهدة</span> · <span class="like-count">2.7M</span> إعجاب</div>
-            <img src="382416e43f47ca7cf6e7351095b99f1f.png" alt="الصمامات القلبية">
-            <p>الصمامات تنظم تدفق الدم بين غرف القلب.</p>
-            <a href="desc_382416e43f47ca7cf6e7351095b99f1f.html"><button>عرض المزيد</button></a>
-        </div>
-        <div class="card">
-            <h3>تخطيط القلب</h3>
-            <div class="stats"><span>800M مشاهدة</span> · <span class="like-count">1.9M</span> إعجاب</div>
-            <img src="54126cb6fd32febd156103a1a763b3be.png" alt="تخطيط القلب">
-            <p>صورة توضح قراءة ECG.</p>
-            <a href="desc_54126cb6fd32febd156103a1a763b3be.html"><button>عرض المزيد</button></a>
-        </div>
-        <div class="card">
-            <h3>جراحة القلب المفتوح</h3>
-            <div class="stats"><span>950M مشاهدة</span> · <span class="like-count">2.3M</span> إعجاب</div>
-            <img src="6a2f8e607403f4663e6ad659c04da669.png" alt="جراحة القلب المفتوح">
-            <p>خطوات العملية الجراحية.</p>
-            <a href="desc_6a2f8e607403f4663e6ad659c04da669.html"><button>عرض المزيد</button></a>
-        </div>
-        <div class="card">
-            <h3>تصوير الصدر للقلب</h3>
-            <div class="stats"><span>780M مشاهدة</span> · <span class="like-count">1.5M</span> إعجاب</div>
-            <img src="7b15cef01b46dd62e049b5588863feba.png" alt="تصوير الصدر للقلب">
-            <p>صورة بالأشعة السينية للقلب.</p>
-            <a href="desc_7b15cef01b46dd62e049b5588863feba.html"><button>عرض المزيد</button></a>
-        </div>
-        <div class="card">
-            <h3>القسطرة القلبية</h3>
-            <div class="stats"><span>1.1B مشاهدة</span> · <span class="like-count">3.1M</span> إعجاب</div>
-            <img src="9f2ccaca4cc186fb4fbfb59e1541fb72.png" alt="القسطرة القلبية">
-            <p>إدخال القسطرة لتشخيص وعلاج أمراض القلب.</p>
-            <a href="desc_9f2ccaca4cc186fb4fbfb59e1541fb72.html"><button>عرض المزيد</button></a>
-        </div>
-        <div class="card">
-            <h3>الصورة ثلاثية الأبعاد للقلب</h3>
-            <div class="stats"><span>600M مشاهدة</span> · <span class="like-count">1.2M</span> إعجاب</div>
-            <img src="b705c91a00b263504a72a9ada8b8746e.png" alt="الصورة ثلاثية الأبعاد للقلب">
-            <p>تصميم ثلاثي الأبعاد للقلب.</p>
-            <a href="desc_b705c91a00b263504a72a9ada8b8746e.html"><button>عرض المزيد</button></a>
-        </div>
-        <div class="card">
-            <h3>القلب والأوعية الدموية</h3>
-            <div class="stats"><span>500M مشاهدة</span> · <span class="like-count">1M</span> إعجاب</div>
-            <img src="f71add5479bfb7dbe92f990985eb6b93.png" alt="القلب والأوعية الدموية">
-            <p>الصورة توضح العلاقة بين القلب والأوعية الدموية.</p>
-            <a href="desc_f71add5479bfb7dbe92f990985eb6b93.html"><button>عرض المزيد</button></a>
-        </div>
-    </div>
+<h2>صور القلب</h2>
+<div class="grid" id="image-grid"></div>
 </div>
 
 <div class="container" id="videos">
-    <h2>فيديوهات الجراحة</h2>
-    <div class="grid">
-        <div class="card">
-            <h3>جراحة صمام القلب</h3>
-            <div class="stats"><span>1.2B مشاهدة</span> · <span class="like-count">3.4M</span> إعجاب</div>
-            <video controls poster="0b1a7e5fb0518f1db20c9f05b0e5a9cd.png">
-                <source src="17a12f9697743b4271a04c6cc3683c20.mp4" type="video/mp4">
+<h2>فيديوهات الجراحة</h2>
+<div class="grid" id="video-grid"></div>
+</div>
+
+<script>
+fetch("data.json")
+.then(response => response.json())
+.then(data => {
+    const imageGrid = document.getElementById("image-grid");
+    data.images.forEach(img => {
+        const card = document.createElement("div");
+        card.className = "card";
+        card.innerHTML = `
+            <h3>${img.title}</h3>
+            <div class="stats"><span>${img.views} مشاهدة</span> · <span class="like-count">${img.likes} إعجاب</span></div>
+            <img src="${img.filename}" alt="${img.title}">
+            <p>${img.shortDesc}</p>
+            <a href="${img.descPage}"><button>عرض المزيد</button></a>
+        `;
+        imageGrid.appendChild(card);
+    });
+
+    const videoGrid = document.getElementById("video-grid");
+    const videos = [];
+    data.videos.forEach(vid => {
+        const card = document.createElement("div");
+        card.className = "card";
+        card.innerHTML = `
+            <h3>${vid.title}</h3>
+            <div class="stats"><span>${vid.views} مشاهدة</span> · <span class="like-count">${vid.likes} إعجاب</span></div>
+            <video controls poster="${vid.poster}">
+                <source src="${vid.filename}" type="video/mp4">
                 المتصفح لا يدعم الفيديو
             </video>
-            <p>فيديو يوضح خطوات إجراء جراحة صمام القلب.</p>
-            <a href="desc_17a12f9697743b4271a04c6cc3683c20.html"><button>عرض المزيد</button></a>
-        </div>
-        <!-- كرر نفس التنسيق لباقي الفيديوهات بنفس الطريقة -->
-    </div>
-</div>
+            <p>${vid.shortDesc}</p>
+            <a href="${vid.descPage}"><button>عرض المزيد</button></a>
+        `;
+        videoGrid.appendChild(card);
+        const videoElement = card.querySelector("video");
+        videos.push(videoElement);
+    });
+
+    videos.forEach(v => {
+        v.addEventListener("play", () => {
+            videos.forEach(other => { if(other !== v) other.pause(); });
+        });
+    });
+});
+</script>
 
 </body>
 </html>
