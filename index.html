@@ -70,13 +70,15 @@ images: [
 {"src":"f71add5479bfb7dbe92f990985eb6b93.png","title":"القلب والأوعية الدموية","shortDesc":"الصورة توضح العلاقة بين القلب والأوعية الدموية.","fullDesc":"الوصف الكامل للقلب والأوعية الدموية..."}
 ],
 videos: [
-{"src":"17a12f9697743b4271a04c6cc3683c20.mp4","title":"جراحة صمام القلب","shortDesc":"فيديو يوضح خطوات إجراء جراحة صمام القلب.","fullDesc":"الوصف الكامل للفيديو الأول..."},
-{"src":"4343d4338acc3dbb46c36473f261c8bc.mp4","title":"عملية القسطرة","shortDesc":"فيديو يوضح كيفية إجراء القسطرة القلبية.","fullDesc":"الوصف الكامل للفيديو الثاني..."},
-{"src":"dc95c4c8d68ebe5f55987d1ab01a3dae.mp4","title":"عملية القلب المفتوح","shortDesc":"فيديو يوضح خطوات عملية القلب المفتوح.","fullDesc":"الوصف الكامل للفيديو الثالث..."},
-{"src":"e9dd9011ecfb469373f3408fc7924f15.mp4","title":"تخطيط القلب أثناء الجراحة","shortDesc":"فيديو يوضح قراءة ECG خلال العملية.","fullDesc":"الوصف الكامل للفيديو الرابع..."},
-{"src":"fbe9ef84ad06f7a4ad8f8b0943217f25.mp4","title":"جراحة الشرايين التاجية","shortDesc":"فيديو يوضح العملية بالتفصيل.","fullDesc":"الوصف الكامل للفيديو الخامس..."}
+{"src":"17a12f9697743b4271a04c6cc3683c20.mp4","title":"جراحة صمام القلب","shortDesc":"فيديو يوضح خطوات إجراء جراحة صمام القلب.","fullDesc":"الوصف الكامل للفيديو الأول...","thumb":"0b1a7e5fb0518f1db20c9f05b0e5a9cd.png"},
+{"src":"4343d4338acc3dbb46c36473f261c8bc.mp4","title":"عملية القسطرة","shortDesc":"فيديو يوضح كيفية إجراء القسطرة القلبية.","fullDesc":"الوصف الكامل للفيديو الثاني...","thumb":"1e027fc2e8e2a76f2de7e08a37737084.png"},
+{"src":"dc95c4c8d68ebe5f55987d1ab01a3dae.mp4","title":"عملية القلب المفتوح","shortDesc":"فيديو يوضح خطوات عملية القلب المفتوح.","fullDesc":"الوصف الكامل للفيديو الثالث...","thumb":"382416e43f47ca7cf6e7351095b99f1f.png"},
+{"src":"e9dd9011ecfb469373f3408fc7924f15.mp4","title":"تخطيط القلب أثناء الجراحة","shortDesc":"فيديو يوضح قراءة ECG خلال العملية.","fullDesc":"الوصف الكامل للفيديو الرابع...","thumb":"54126cb6fd32febd156103a1a763b3be.png"},
+{"src":"fbe9ef84ad06f7a4ad8f8b0943217f25.mp4","title":"جراحة الشرايين التاجية","shortDesc":"فيديو يوضح العملية بالتفصيل.","fullDesc":"الوصف الكامل للفيديو الخامس...","thumb":"6a2f8e607403f4663e6ad659c04da669.png"}
 ]
 };
+
+let currentPlayingVideo = null;
 
 function getRandomStats(){
     return {likes: (Math.floor(Math.random()*900)+100)+'M', views: (Math.floor(Math.random()*900)+100)+'B'};
@@ -91,7 +93,7 @@ function renderItems(dataArray, containerId, isVideo=false){
         if(isVideo){
             div.innerHTML = `<h3>${item.title}</h3>
                 <div class="stats">${stats.views} مشاهدة · ${stats.likes} إعجاب</div>
-                <video controls>
+                <video controls poster="${item.thumb}">
                     <source src="${item.src}" type="video/mp4">
                     المتصفح لا يدعم الفيديو
                 </video>
@@ -106,6 +108,15 @@ function renderItems(dataArray, containerId, isVideo=false){
         }
         container.appendChild(div);
     });
+    if(isVideo){
+        const videos = container.querySelectorAll('video');
+        videos.forEach(v=>{
+            v.addEventListener('play',()=>{ 
+                if(currentPlayingVideo && currentPlayingVideo!==v){ currentPlayingVideo.pause(); } 
+                currentPlayingVideo = v;
+            });
+        });
+    }
 }
 
 function openModal(index,isVideo){
